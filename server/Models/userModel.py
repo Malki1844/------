@@ -22,7 +22,7 @@ def get_all_users():
 
 def post_user(data):
     if required_field(data):
-        new_user = User(name=data['name'], address=data['address'], email=data['email'], password=data['password'])
+        new_user = User(data['name'], data['address'], data['email'], data['password'])
         print(new_user)
         query = f"INSERT INTO Users (Name, Address, Email, Password) VALUES ('{new_user.name}', '{new_user.address}', '{new_user.email}', '{new_user.password}')"
         res, new_id = insert_db_query(query)
@@ -41,7 +41,7 @@ def post_user(data):
 
 def update_user(id,data):
     if required_field(data):
-        updated_user = User(name=data['name'], address=data['address'], email=data['email'], password=data['password'])
+        updated_user = User(data['name'], data['address'], data['email'], data['password'])
         print(updated_user)
         query = f"UPDATE Users SET Name='{updated_user.name}', Address='{updated_user.address}', Email='{updated_user.email}', Password='{updated_user.password}' WHERE Code={id}"
         res, message = update_db_query(query)

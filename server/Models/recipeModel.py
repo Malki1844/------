@@ -67,7 +67,7 @@ def get_recipe_id(id):
 def put_recipe(id, data):
      if required_field(data):
         # data['dateAdded']=convert_date(data['dateAdded'])
-        recipe_update = Recipe(recipeCode=id, RecipeName=data['recipeName'], Preparation=data['preparation'], Difficulty=data['difficulty'], DateAdded=data['dateAdded'], Image=data['image'], UserCode=data['userCode'], CategoryCode=data['categoryCode'], Instruction=data.get('instructions', []), Ingredient=data.get('ingredients', []))
+        recipe_update = Recipe(id, data['recipeName'], data['preparation'], data['difficulty'], data['dateAdded'], data['image'], data['userCode'], data['categoryCode'], data.get('instructions', []), data.get('ingredients', []))
         query = f"""UPDATE Recipe SET RecipeName='{recipe_update.RecipeName}', Preparation={recipe_update.Preparation},
          Difficulty={recipe_update.Difficulty}, DateAdded='{recipe_update.DateAdded}',Image='{recipe_update.Image}',
          UserCode={recipe_update.UserCode}, CategoryCode={recipe_update.CategoryCode} WHERE RecipeCode={id}"""
@@ -101,7 +101,7 @@ def delete_recipe(id):
 
 def post_recipe(data):
     if required_field(data):
-        new_recipe = Recipe(recipeCode=id, RecipeName=data['recipeName'], Preparation=data['preparation'], Difficulty=data['difficulty'], DateAdded=data['dateAdded'], Image=data['image'], UserCode=data['userCode'], CategoryCode=data['categoryCode'], Instruction=data.get('instructions', []), Ingredient=data.get('ingredients', []))
+        new_recipe = Recipe(id, data['recipeName'], data['preparation'], data['difficulty'], data['dateAdded'], data['image'], data['userCode'], data['categoryCode'], data.get('instructions', []), data.get('ingredients', []))
         query = f" INSERT INTO Recipe ( RecipeName, CategoryCode, Preparation, Difficulty, DateAdded, Image, UserCode) VALUES ('{new_recipe.RecipeName}', {new_recipe.CategoryCode}, {new_recipe.Preparation}, {new_recipe.Difficulty},'{new_recipe.DateAdded}','{new_recipe.Image}',{new_recipe.UserCode})"
         res, new_id = insert_db_query(query)
         if res:

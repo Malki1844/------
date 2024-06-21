@@ -1,0 +1,66 @@
+<div class="container" style="margin-left: 550px; padding-top: 40px;">
+
+<h1>Update Recipe</h1>
+
+<label>recipe name</label>
+<br>
+<input type="text" name="recipeName" [(ngModel)]="recipeChange.recipeName" >
+<br>
+<label>recipe difficulty</label>
+<br>
+<input type="number" min='1' max='5' name="difficulty" [(ngModel)]="recipeChange.difficulty ">
+<br>
+<label>recipe image</label>
+<br>
+<input type="text" name="image" [(ngModel)]="recipeChange.image">
+<br>
+<label>ingredient</label>
+<br>
+<div>
+<div *ngFor="let ingredient of recipeChange.ingredients; let i = index; trackBy: trackByIndex">
+    <input type="text" name="ing" [(ngModel)]="recipeChange.ingredients[i]">
+</div>
+
+<br>
+<label>instruction</label>
+<br>
+<div>
+<div *ngFor="let instruction of recipeChange.instructions let i=index; trackBy: trackByIndex" >
+<input type="text" name="ing" [(ngModel)]="recipeChange.instructions[i]">
+</div>
+</div>
+<button (click)="updateRecipe()">save changes</button>
+
+<button (click)="cancelChange()">cancel</button>
+</div>
+
+<!-- <div class="all">
+    <mat-form-field style="margin-left: 40%;">
+        <mat-label>Recipe Name</mat-label>
+        <input matInput type="text" name="recipeName" [(ngModel)]="recipeChange.recipeName">
+    </mat-form-field>
+    <br>
+    <mat-form-field style="margin-left: 40%;">
+        <mat-label>Recipe Difficulty</mat-label>
+        <input matInput type="number" name="difficulty" min="1" max="5" [(ngModel)]="recipeChange.difficulty">
+    </mat-form-field>
+    <br>
+    <mat-form-field style="margin-left: 40%;">
+        <mat-label>Recipe Image</mat-label>
+        <input matInput type="text" name="image" [(ngModel)]="recipeChange.image">
+    </mat-form-field>
+    <br>
+    <mat-form-field *ngFor="let ingredient of recipeChange.ingredients; let i = index; trackBy: trackByIndex">
+        <mat-label>Ingredient {{ i + 1 }}</mat-label>
+        <input matInput type="text" name="ingredient{{ i }}" [(ngModel)]="recipeChange.ingredients[i]">
+    </mat-form-field>
+    <br>
+    <mat-form-field *ngFor="let instruction of recipeChange.instructions; let i = index; trackBy: trackByIndex" style="margin: auto;">
+        <mat-label>Instruction {{ i + 1 }}</mat-label>
+        <input matInput type="text" name="instruction{{ i }}" [(ngModel)]="recipeChange.instructions[i]">
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" style="margin-left: 40%;" (click)="updateRecipe()">Save Changes</button>
+    <br>
+    <button mat-raised-button color="warn" style="margin-left: 40%;" (click)="cancelChange()">Cancel</button>
+</div> -->

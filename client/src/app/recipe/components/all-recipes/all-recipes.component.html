@@ -1,0 +1,54 @@
+<div class="all">
+    <h4>אפשרויות סינון</h4>
+    <br>
+    <mat-form-field>
+        <mat-label>אפשרויות סינון</mat-label>
+        <mat-select (selectionChange)="onSelectionChange($event)">
+            @for (search of allSearch; track search) {
+            <mat-option [value]="search.value">{{search.viewValue}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    @if(this.isRange){
+    <div>
+        <label for="rangeInput">בחר משך זמן הכנה מקסימלי : </label>
+        <input type="range" id="rangeInput" [(ngModel)]="rangeValue" [min]="min" [max]="max"
+            (input)="onRangeChange($event)">
+        <span>{{rangeValue}}</span>
+    </div>}
+    @if(this.isName){
+    <form class="example-form">
+        <mat-form-field class="example-full-width">
+            <mat-label>Search</mat-label>
+            <input type="text" matInput placeholder="Search recipe" name="nameProduct" [(ngModel)]="inputName"
+                (input)="search()">
+        </mat-form-field>
+    </form>
+    }
+    @if(this.isCategory){
+        <br>
+    <form [formGroup]="categoryForm">
+        <mat-form-field appearance="fill">
+            <mat-label>Select Category</mat-label>
+            <mat-select name="categories" id="allC" formControlName="categoryCode" (selectionChange)="searchCategory($event)">
+                <mat-option value="" disabled>--select category--</mat-option>
+                <mat-option value="1">Main</mat-option>
+                <mat-option value="2">Extras</mat-option>
+                <mat-option value="3">Desert</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+    
+    }<br>
+    <button class="custom-btn btn-3" (click)="addRecipe()"><span>add a recipe</span></button>
+</div>
+
+<div class="recipe-list">
+    <div class="recipe-item" *ngFor="let CurrentRecipe of recipeSearch">
+        <app-small-recipe [recipe]="CurrentRecipe"></app-small-recipe>
+    </div>
+</div>
+
+
+
+

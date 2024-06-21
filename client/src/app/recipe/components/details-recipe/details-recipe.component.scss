@@ -1,0 +1,41 @@
+.main {
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'oopsz' 24;
+    }
+  }
+  
+  .extras {
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'oopsz' 24;
+    }
+  }
+  .desert{
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+  }
+  .all{
+    margin-top: 80px;
+}
+.mat-list {
+  padding: 0;
+}
+
+.mat-list-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px; /* מרווח בין פריטי הרשימה */
+}
+
+.mat-list-icon {
+  width: 24px; /* רוחב האייקון */
+  margin-right: 8px; 
+}
+img:hover {
+  transform: scale(1.01); 
+  box-shadow: 0px 0px 15px 0px rgba(0,0,0,80);
+}

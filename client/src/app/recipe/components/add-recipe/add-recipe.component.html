@@ -1,0 +1,69 @@
+<form [formGroup]="recipeForm" (ngSubmit)="onSubmit()" class="form-container">
+    <div class="scrollable-form">
+        <div class="form-group">
+            <mat-form-field appearance="fill">
+                <mat-label>Insert Name</mat-label>
+                <input matInput type="text" name="recipeName" formControlName="recipeName">
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field appearance="fill">
+                <mat-label>Select Category</mat-label>
+                <mat-select formControlName="categoryCode" (selectionChange)="updateCategoryCode($event)">
+                    <mat-option value="" disabled>--select category--</mat-option>
+                    <mat-option value="1">Main</mat-option>
+                    <mat-option value="2">Extras</mat-option>
+                    <mat-option value="3">Desert</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field appearance="fill">
+                <mat-label>Insert Preparation</mat-label>
+                <input matInput type="number" name="preparation" formControlName="preparation">
+            </mat-form-field>
+        </div>
+
+        <div class="form-group">
+            <mat-form-field appearance="fill">
+                <mat-label>Insert Difficulty</mat-label>
+                <input matInput type="number" min="1" max="5" name="difficulty" formControlName="difficulty">
+                @if (!recipeForm.hasError('difficulty')){
+                    <mat-error>The max difficulty is 5!</mat-error>
+                }
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field appearance="fill">
+                <mat-label>Insert Image</mat-label>
+                <input matInput type="text" name="image" formControlName="image">
+            </mat-form-field>
+        </div>
+
+        <div class="form-group row">
+            <div formArrayName="ingredients" class="form-column">
+                <div *ngFor="let ingredient of ingredients.controls; let i=index" [formGroupName]="i">
+                    <mat-form-field appearance="fill">
+                        <mat-label>{{'Ingredient ' + (i+1)}}</mat-label>
+                        <input matInput type="text" formControlName="ingredient" (blur)="check(i)">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-row">
+                <div formArrayName="instructions" class="form-column">
+                    <div *ngFor="let instruction of instructions.controls; let i=index" [formGroupName]="i">
+                        <mat-form-field appearance="fill">
+                            <mat-label>{{'Instruction ' + (i+1)}}</mat-label>
+                            <input matInput type="text" formControlName="instruction" (blur)="check2(i)">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button mat-raised-button color="primary" type="submit">Submit</button>
+        </div>
+        <div style="height: 100px;"></div>
+    </div>
+</form>

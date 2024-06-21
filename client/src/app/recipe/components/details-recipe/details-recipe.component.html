@@ -1,0 +1,42 @@
+@if(this.isEdit==false){
+  <div class="all">
+<h2 style="margin-left: 150px;">{{recipeObj.recipeName}} | <span><img src={{category}}></span></h2>
+<h4 style="margin-left: 150px;">{{this.code}}</h4>
+<h4 style="margin-left: 150px;">author: {{this.name}}</h4>
+<h5 style="margin-left: 150px;">preparation: {{this.recipeObj.preparation | time}}</h5>
+<br>
+<img src="{{ recipeObj.image }}" alt="Recipe Image" style="width: 400px; margin-left: 150px;">
+<br>
+<div style="border: 2px solid black; width: 300px; margin-left: 150px; ">
+<p style="margin-left: 30px;">
+    <b>Level of Difficulty:</b> {{ getStarRating(recipeObj.difficulty) }}</p>
+</div>
+<div class="recipe-instructions" style="margin-left: 150px;">
+    <h3>ingredient</h3>
+    <hr style="margin-top: 5px; border-bottom: 2px solid black; width: 200px;"> 
+    <p></p>
+    <ul class="mat-list">
+      <li *ngFor="let ingredient of recipeObj.ingredients" class="mat-list-item">
+        <span class="mat-list-icon">*</span>
+        <span class="mat-list-text">{{ ingredient }}</span>
+      </li>
+    </ul>
+    <h3>instructions</h3>
+    <hr style="margin-top: 5px; border-bottom: 2px solid black; width: 250px;"> 
+    <p></p>
+    <ul class="mat-list">
+      <li *ngFor="let instruction of recipeObj.instructions; let i=index" class="mat-list-item">
+        <span class="mat-list-icon">{{ i + 1 }}</span>
+        <span class="mat-list-text">{{ instruction }}</span>
+      </li>
+    </ul>
+    <p></p>
+  </div>  
+
+  <button  mat-flat-button color="primary" style="margin-left: 150px;" *ngIf="IsAuthor()" (click)="deleteRecipe()">delete</button>
+  <button mat-flat-button color="primary" style="margin-left: 20px;" *ngIf="IsAuthor()" (click)="this.isEdit=true">edit-recipe</button>
+  </div>
+}
+@else{
+<app-edit-recipe [recipeSave]="this.recipeObj" (OnEdit)="isEdit=$event"></app-edit-recipe>
+}

@@ -1,0 +1,40 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-group {
+    margin-bottom: 16px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-group.row {
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+    margin-right: 225px;
+}
+
+.form-column {
+    flex: 1;
+    margin: 0 8px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+.form-row{
+    width: 200px;
+}
+form{
+    margin-top: 40px;
+}
+.scrollable-form {
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: calc(100vh - 200px); 
+}

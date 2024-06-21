@@ -1,0 +1,24 @@
+<div class="sample-column">
+    <form>
+        <igx-card elevated>
+            <igx-card-media height="300px">
+                <img [src]="recipe.image">
+            </igx-card-media>
+            <igx-card-header>
+                <h4 igxCardHeaderTitle>{{ recipe.recipeName }}</h4>
+                <span>{{categoryName}}</span>
+                <img src={{category}} style="width: 30px;">
+            </igx-card-header>
+            <igx-card-content>
+                <span><b>Level of Difficulty:</b> {{ getStarRating(recipe.difficulty) }}</span>
+                
+                <igc-rating [(ngModel)]="recipe.difficulty" name="recipe_difficulty"></igc-rating>
+            </igx-card-content>
+            <igx-card-actions>
+                
+                <button igxButton="outlined" igxRipple igxStart (click)="showDetails()">full recipe</button>
+            </igx-card-actions>
+        </igx-card>
+    </form>
+</div>
+
